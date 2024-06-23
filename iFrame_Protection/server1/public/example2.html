@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Iframe Example</title>
+  </head>
+  <body>
+    <h1>Data Theft via js</h1>
+    <iframe
+      src="http://localhost:5000/iframe2"
+      sandbox="allow-same-origin allow-scripts allow-modals"
+    ></iframe>
+
+    <script>
+      function setCookies(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60);
+
+        const expire = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expire;
+
+        console.log(name + "=" + value + ", expires=	" + expire);
+      }
+
+      setCookies("examplecookie", "Hello, I am a cookie", 5);
+    </script>
+  </body>
+</html>

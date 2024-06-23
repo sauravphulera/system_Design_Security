@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h1>Malicious iframe2</h1>
+    <p>this iframe attempts to steal data on parent window</p>
+
+    <script>
+      window.onload = () => {
+        alert("hi");
+        try {
+          const parentWindow = window.parent;
+          const parentDocument = parentWindow.document;
+
+          const stolenData = parentDocument.innerHtml;
+          console.log("stolenData: " + stolenData);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+    </script>
+  </body>
+</html>
